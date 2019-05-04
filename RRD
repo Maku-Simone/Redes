@@ -1,0 +1,35 @@
+import time
+from SNMP import *
+import rrdtool
+
+
+def createRRDTOOL(nombre,start,step):
+    ret = rrdtool.create("files/"+nombre,"--start",start,"--step",step,"DS:"+nombre+":COUNTER:600:U:U","RRA:LAST:0.5:1:700")
+    if ret:
+        print(rrdtool.error())
+    return
+
+
+def updateRRD(archivo, comunidad, host, oid, puerto):
+    con = 0
+    while con < 100:
+        input_data_snmp = int(consultaSNMP(comunidad,puerto,host,oid))
+        valor = "N:" + str(input_data_snmp)
+        print(valor)
+        rrdtool.update("rrd/"+archivo+".rrd", valor)
+        rrdtool.dump("rrd/"+archivo+".rrd","xml/"+archivo+".xml")
+        time.sleep(1)
+        con += 1
+    return 900
+
+
+def graficarRRD(nombre):
+    print("Graficando ", nombre)
+    ret = rrdtool.graph("images/" + nombre + ".png",
+                        "--start", '1551649830',
+                        "--end", "N",
+                        "--vertical-label=Bytes/s",
+                        "DEF:"+nombre+"=rrd/" + nombre + ".rrd:"+"cosa"+":AVERAGE",
+                        "AREA:"+nombre+"#00FF00:" + nombre)
+    print("Ya he terminado")
+    return
