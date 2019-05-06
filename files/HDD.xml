@@ -4,7 +4,7 @@
 <rrd>
 	<version>0003</version>
 	<step>10</step> <!-- Seconds -->
-	<lastupdate>1557104851</lastupdate> <!-- 2019-05-05 20:07:31 CDT -->
+	<lastupdate>1557104871</lastupdate> <!-- 2019-05-05 20:07:51 CDT -->
 
 	<ds>
 		<name> cosa </name>
@@ -14,8 +14,8 @@
 		<max>NaN</max>
 
 		<!-- PDP Status -->
-		<last_ds>3209940</last_ds>
-		<value>5.0036608919e+06</value>
+		<last_ds>3229076</last_ds>
+		<value>4.8603018648e+06</value>
 		<unknown_sec> 0 </unknown_sec>
 	</ds>
 
@@ -29,15 +29,13 @@
 		</params>
 		<cdp_prep>
 			<ds>
-			<primary_value>3.2011582331e+06</primary_value>
+			<primary_value>3.2292684953e+06</primary_value>
 			<secondary_value>3.2011582331e+06</secondary_value>
 			<value>NaN</value>
 			<unknown_datapoints>0</unknown_datapoints>
 			</ds>
 		</cdp_prep>
 		<database>
-			<!-- 2019-05-05 18:11:00 CDT / 1557097860 --> <row><v>NaN</v></row>
-			<!-- 2019-05-05 18:11:10 CDT / 1557097870 --> <row><v>NaN</v></row>
 			<!-- 2019-05-05 18:11:20 CDT / 1557097880 --> <row><v>NaN</v></row>
 			<!-- 2019-05-05 18:11:30 CDT / 1557097890 --> <row><v>NaN</v></row>
 			<!-- 2019-05-05 18:11:40 CDT / 1557097900 --> <row><v>NaN</v></row>
@@ -736,6 +734,8 @@
 			<!-- 2019-05-05 20:07:10 CDT / 1557104830 --> <row><v>3.1718697089e+06</v></row>
 			<!-- 2019-05-05 20:07:20 CDT / 1557104840 --> <row><v>3.2011582331e+06</v></row>
 			<!-- 2019-05-05 20:07:30 CDT / 1557104850 --> <row><v>3.2011582331e+06</v></row>
+			<!-- 2019-05-05 20:07:40 CDT / 1557104860 --> <row><v>3.2225346376e+06</v></row>
+			<!-- 2019-05-05 20:07:50 CDT / 1557104870 --> <row><v>3.2292684953e+06</v></row>
 		</database>
 	</rra>
 </rrd>

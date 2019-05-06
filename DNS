@@ -1,0 +1,52 @@
+import socket
+import time
+import urllib.request
+import ssl
+
+ssl.match_hostname = lambda cert, hostname: True
+
+
+def callDNS():
+    hostname = 'www.google.com'
+    print("Obteniendo host")
+    dns_start = time.time()
+    ip_address = socket.gethostbyname(hostname)
+    dns_end = time.time()
+    url = 'https://%s/' % ip_address
+    req = urllib.request.Request(url)
+    req.add_header('Host', hostname)
+
+    print("Haciendo handshake")
+    handshake_start = time.time()
+    stream = urllib.request.urlopen(req)
+    handshake_end = time.time()
+
+    print("Recibiendo data")
+    data_start = time.time()
+    data_length = len(stream.read())
+    data_end = time.time()
+    print('DNS time            = %.2f ms' % ((dns_end - dns_start) * 1000))
+    print('HTTP handshake time = %.2f ms' % ((handshake_end - handshake_start) * 1000))
+    print('HTTP data time      = %.2f ms' % ((data_end - data_start) * 1000))
+    print('Data received       = %d bytes' % data_length)
+    return (dns_end - dns_start) * 1000
+
+
+def miniDNS():
+    hostname = '192.168.1.77'
+    dns_start = time.time()
+    socket.gethostbyname(hostname)
+    dns_end = time.time()
+    print('DNS time            = %.2f ms' % ((dns_end - dns_start) * 1000))
+    return
+
+
+def cycledCalls(n):
+    x = 0
+    while x < n:
+        miniDNS()
+        x+=1
+    return
+
+
+cycledCalls(50)
